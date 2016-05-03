@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2016 a las 11:10:22
+-- Tiempo de generación: 03-05-2016 a las 11:27:20
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -69,7 +69,15 @@ CREATE TABLE IF NOT EXISTS `tbl_interesado` (
   `usu_emailP` varchar(50) COLLATE utf8_bin NOT NULL,
   `usu_emailC` varchar(50) COLLATE utf8_bin NOT NULL,
   `id_juegos` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `tbl_interesado`
+--
+
+INSERT INTO `tbl_interesado` (`id_interes`, `usu_emailP`, `usu_emailC`, `id_juegos`) VALUES
+(1, 'aitor.blesa@fje.edu', 'sergio.ayala@fje.edu', 6),
+(2, 'sergio.ayala@fje.edu', 'xavi.granell@fje.edu', 7);
 
 -- --------------------------------------------------------
 
@@ -83,7 +91,18 @@ CREATE TABLE IF NOT EXISTS `tbl_juego` (
   `id_genero` int(11) NOT NULL,
   `id_plataforma` int(11) NOT NULL,
   `usu_emailP` varchar(50) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `tbl_juego`
+--
+
+INSERT INTO `tbl_juego` (`id_juegos`, `jue_nombre`, `id_genero`, `id_plataforma`, `usu_emailP`) VALUES
+(6, 'DriveClub 4', 4, 12, 'aitor.blesa@fje.edu'),
+(7, 'FIFA 16', 5, 12, 'sergio.ayala@fje.edu'),
+(8, 'World Of Warcraft', 7, 11, 'sergio.ayala@fje.edu'),
+(9, 'OverWatch Origins 2', 3, 11, 'xavi.granell@fje.edu'),
+(10, 'Assassin''s Creed', 2, 13, 'aitor.blesa@fje.edu');
 
 -- --------------------------------------------------------
 
@@ -153,7 +172,15 @@ CREATE TABLE IF NOT EXISTS `tbl_valoracio` (
   `usu_emailP` varchar(50) COLLATE utf8_bin NOT NULL,
   `usu_emailC` varchar(50) COLLATE utf8_bin NOT NULL,
   `val_valoracion` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `tbl_valoracio`
+--
+
+INSERT INTO `tbl_valoracio` (`id_valoracion`, `usu_emailP`, `usu_emailC`, `val_valoracion`) VALUES
+(3, 'aitor.blesa@fje.edu', 'sergio.ayala@fje.edu', 'Muy buen vendedor y buena compra. Todo en buenas condiciones'),
+(4, 'xavi.granell@fje.edu', 'aitor.blesa@fje.edu', 'Comprador muy fiable');
 
 --
 -- Índices para tablas volcadas
@@ -225,12 +252,12 @@ MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT de la tabla `tbl_interesado`
 --
 ALTER TABLE `tbl_interesado`
-MODIFY `id_interes` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_interes` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tbl_juego`
 --
 ALTER TABLE `tbl_juego`
-MODIFY `id_juegos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id_juegos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tbl_mensajes`
 --
@@ -250,7 +277,7 @@ MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT de la tabla `tbl_valoracio`
 --
 ALTER TABLE `tbl_valoracio`
-MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
