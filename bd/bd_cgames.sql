@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2016 a las 11:27:20
+-- Tiempo de generación: 03-05-2016 a las 11:34:39
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -146,9 +146,10 @@ INSERT INTO `tbl_plataforma` (`id_plataforma`, `pla_nombre`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_usuario` (
+  `usu_email` varchar(50) COLLATE utf8_bin NOT NULL,
+  `usu_contra` varchar(50) COLLATE utf8_bin NOT NULL,
 `id_usuario` int(11) NOT NULL,
   `usu_nombre` varchar(20) COLLATE utf8_bin NOT NULL,
-  `usu_email` varchar(50) COLLATE utf8_bin NOT NULL,
   `usu_apellido` varchar(35) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -156,10 +157,10 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
 -- Volcado de datos para la tabla `tbl_usuario`
 --
 
-INSERT INTO `tbl_usuario` (`id_usuario`, `usu_nombre`, `usu_email`, `usu_apellido`) VALUES
-(1, 'Aitor', 'aitor.blesa@fje.edu', 'Blesa'),
-(2, 'Sergio', 'sergio.ayala@fje.edu', 'Ayala'),
-(3, 'Xavi', 'xavi.granell@fje.edu', 'Granell');
+INSERT INTO `tbl_usuario` (`usu_email`, `usu_contra`, `id_usuario`, `usu_nombre`, `usu_apellido`) VALUES
+('aitor.blesa@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Aitor', 'Blesa'),
+('sergio.ayala@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Sergio', 'Ayala'),
+('xavi.granell@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 3, 'Xavi', 'Granell');
 
 -- --------------------------------------------------------
 
