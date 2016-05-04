@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    if(isset($_SESSION['mail'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,15 +14,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
@@ -42,6 +38,7 @@
                         <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#about-us">About Us</a></li>
                         <li><a href="#contact">Contact</a></li>
+                        <a href="login.php"><i class="icon-signout icon-2x"></i></a>
                     </ul>
                 </div>
             </div>
@@ -441,3 +438,9 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+<?php
+    }else{
+        header("Location: login.php");
+        die();
+    }
+?>
