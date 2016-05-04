@@ -3,7 +3,7 @@ class Persona {
     private $usu;  // Objetos en nuestro carrito de compras
     private $pass;
     // Agregar $num artículos de $artnr al carrito
-    public function getusu()
+    public function getUsu()
     {
     	return $this->usu;
     }
@@ -13,7 +13,7 @@ class Persona {
     	return $this->pass;
     }
 
-     public function setusu($usu)
+     public function setUsu($usu)
     {
     	$this->usu=$usu;
     }

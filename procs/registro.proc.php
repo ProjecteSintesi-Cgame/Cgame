@@ -3,7 +3,7 @@ session_start();
 
 include ("../conexion/conexion.php");
 
-if (!isset($_SESSION)) {
+if (!isset($_SESSION['mail'])) {
    header('location: ../index.php');
 }
 
