@@ -32,8 +32,6 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        
-
                         <li id="carga_services"><a href="#services">Services</a></li>
                         <li id="carga_portfolio"><a href="#portfolio">Portfolio</a></li>
                         <!-- <li><a href="#pricing">Pricing</a></li> -->
@@ -69,12 +67,9 @@
         <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
     </section><!--/#main-slider-->
 
-    <section id="carga_contenido">
+    <section id="carga_contenido" class="margen">
       
     </section><!--/#carga_contenido-->
-
-
-
     <footer id="footer">
         <div class="container">
             <div class="row">
