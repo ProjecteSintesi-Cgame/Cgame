@@ -13,6 +13,7 @@ function juegosindex(){
 
 // *********************** Al clicar en el Logo o en icono de Home, cargara el slider y juegosindex ***********************//
 $('#carga_index').click(function(){
+
       $.ajax({
 	    type: "POST",
 	    url: "./contenido/juegosindex.php",
@@ -39,9 +40,10 @@ $('#carga_portfolio').click(function(){
 
 
 $('#carga_services').click(function(){
+
       $.ajax({
 	    type: "POST",
-	    url: "./contenido/services.php",
+	    url: "./contenido/formJuegos.php",
 	    success: function(a) {
 	    	$('#main-slider').hide('slow');
             $('#carga_contenido').html(a);
@@ -61,4 +63,22 @@ $('#carga_aboutus').click(function(){
        });
    });
 
+	function validaFormularioJuego(){
+		var juego = document.getElementById("juego").value;
+	  if(juego == null || juego.length == 0){
+	  	
+    	document.getElementById("error_juego_vacio").style.display = "block";
+    	document.getElementById("error_juego_vacio").innerHTML="<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Introduce el nombre del juego</div>";
+    	return false;
+    }else{
+    	$.ajax({
+	    type: "POST",
+	    url: "./contenido/anadirJuegos.proc.php",
+	    data: $("#form_Juego").serialize(),
+	    success: function(data) {
+	    	$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
+	    }
+       });
+    }
 
+	}
