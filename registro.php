@@ -15,7 +15,7 @@
 		<div>
 		
 			
-			<form id="form_registro" method="GET" action="procs/registro.proc.php" onsubmit="return validaFormulario();">
+			<form id="form_registro" method="GET" action="contenido/registro.proc.php" onsubmit="return validaFormulario();">
 				<h2>Registro</h2>
 				<div>
 				<!-- CORREO ELECTRONICO DEL USUARIO -->

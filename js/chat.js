@@ -7,7 +7,7 @@ alert(usu1);
 		
 		$.ajax({
 	  	  	type: "GET",
-	  	  	url: "./procs/mostrarMensajes.proc.php",
+	  	  	url: "./contenido/mostrarMensajes.proc.php",
 	  	  	//data: "id="+id,
 	  	  	dataType: "json",
 	  	  	error: function(){

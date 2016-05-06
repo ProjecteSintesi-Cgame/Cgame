@@ -45,7 +45,7 @@
                     		</div>
                         </div>
                         <div class="form-bottom">
-							<form class="login-form" method="POST" action="procs/login.proc.php">
+							<form class="login-form" method="POST" action="contenido/login.proc.php">
 								<input type="hidden" name="login" value="si">
 								<!-- MENSAJES BUENOS -->
 								<?php
@@ -71,7 +71,7 @@
 		                        </div>
 
 
- 								<button type="submit" class="btn" onclick="location='procs/login.proc.php'">Login</button>
+ 								<button type="submit" class="btn" onclick="location='contenido/login.proc.php'">Login</button>
  		 						<button type="button" class="btn" onclick="location='registro.php'">Registrate </button>
  							</form>
 	                    </div>

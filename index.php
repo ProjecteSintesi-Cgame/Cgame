@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Xeon | OnePage Responsive Theme</title>
+    <title>CGame</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -49,7 +49,7 @@
             <div class="item active">
                 <div class="container">
                     <div class="carousel-content">
-                        <h1>Free Onepage Theme</h1>
+                        <h1>CGame</h1>
                         <p class="lead">Xeon is the best free onepage responsive theme available arround the globe<br>Download it right now for free</p>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                    &copy; 2016 CGame. Todos los derechos reservados.
                 </div>
                 <div class="col-sm-6">
                     <img class="pull-right" src="images/shapebootstrap.png" alt="ShapeBootstrap" title="ShapeBootstrap">
@@ -82,7 +82,6 @@
             </div>
         </div>
     </footer><!--/#footer-->
-
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/contenido_web.js"></script>
