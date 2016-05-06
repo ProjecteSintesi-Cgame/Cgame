@@ -10,15 +10,15 @@
 <html>
 <head>
     <title>Soundity</title>
-    
-   
+
+
     <meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/css/form-elements.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="login/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="login/css/form-elements.css">
+    <link rel="stylesheet" href="login/css/style.css">
 </head>
 <body>
 	<div class="top-content">
@@ -57,7 +57,7 @@
 								if(isset($error_login))
 									echo "
 						 			<div class='alert alert-warning' role='alert'>". $error_login. "</div>";
-								if(isset($validarse)) 
+								if(isset($validarse))
 									echo "<div class='ui form error'>
 						 			<div class='alert alert-danger' role='alert'>". $validarse. "</div>";
 								?>
@@ -80,7 +80,7 @@
             </div>
         </div>
     </div>
-		
+
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
     <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
     <script src="assets/js/jquery.backstretch.min.js"></script>
