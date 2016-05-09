@@ -71,10 +71,16 @@ $('#carga_aboutus').click(function(){
     	document.getElementById("error_juego_vacio").innerHTML="<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Introduce el nombre del juego</div>";
     	return false;
     }else{
+    	document.getElementById("error_juego_vacio").style.display = "none";
+    	var fd = new FormData(document.getElementById("form_Juego"));
+
     	$.ajax({
 	    type: "POST",
 	    url: "./contenido/anadirJuegos.proc.php",
-	    data: $("#form_Juego").serialize(),
+	    data: fd,
+	    cache: false,
+    	contentType: false,
+    	processData: false,
 	    success: function(data) {
 	    	$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
 	    }
@@ -82,3 +88,4 @@ $('#carga_aboutus').click(function(){
     }
 
 	}
+

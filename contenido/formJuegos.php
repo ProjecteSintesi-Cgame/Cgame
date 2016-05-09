@@ -8,10 +8,14 @@ session_start();
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <div class="center">
-                            <form id="form_Juego" method="POST" action="#form_Juego">
+                            <form id="form_Juego" method="POST" action="#form_Juego" enctype="multipart/form-data">
 							<h2>Subida Juego</h2>
 							<div>
 							<!-- nombre juego -->
+							
+
+							
+
 								<label>Nombre Juego: </label>
 								<div>
 									<input id="juego" name="juego" type="text" maxlength="50" size="30" value=""/>
@@ -21,7 +25,10 @@ session_start();
 								
 								<label><input id="buscarBD" name="buscarBD" type="hidden" value="" /></label>
 					
-				
+								<div>
+									<input type="file" name="imagen" id="imagen"/>
+
+								</div>
 
 
 								Plataforma
@@ -64,7 +71,7 @@ session_start();
 				
 
 								<!-- BOTON DE ENVIAR -->
-								<input type="button" name="submit" value="Registrarse" onclick="return validaFormularioJuego();" />
+								<input type="button" name="submit" value="Insertar" onclick="return validaFormularioJuego();" />
 								
 							</div>
 							</form>
