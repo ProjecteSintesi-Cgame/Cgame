@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2016 a las 11:34:39
+-- Tiempo de generación: 09-05-2016 a las 10:51:47
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `tbl_chat` (
 CREATE TABLE IF NOT EXISTS `tbl_genero` (
 `id_genero` int(11) NOT NULL,
   `gen_nombre` varchar(20) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `tbl_genero`
@@ -56,7 +56,8 @@ INSERT INTO `tbl_genero` (`id_genero`, `gen_nombre`) VALUES
 (4, 'Carreras'),
 (5, 'Deportes'),
 (6, 'Bélico'),
-(7, 'Rol');
+(7, 'Rol'),
+(8, 'Aventuras');
 
 -- --------------------------------------------------------
 
@@ -90,19 +91,24 @@ CREATE TABLE IF NOT EXISTS `tbl_juego` (
   `jue_nombre` varchar(20) COLLATE utf8_bin NOT NULL,
   `id_genero` int(11) NOT NULL,
   `id_plataforma` int(11) NOT NULL,
+  `jue_foto` varchar(25) COLLATE utf8_bin NOT NULL,
   `usu_emailP` varchar(50) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `tbl_juego`
 --
 
-INSERT INTO `tbl_juego` (`id_juegos`, `jue_nombre`, `id_genero`, `id_plataforma`, `usu_emailP`) VALUES
-(6, 'DriveClub 4', 4, 12, 'aitor.blesa@fje.edu'),
-(7, 'FIFA 16', 5, 12, 'sergio.ayala@fje.edu'),
-(8, 'World Of Warcraft', 7, 11, 'sergio.ayala@fje.edu'),
-(9, 'OverWatch Origins 2', 3, 11, 'xavi.granell@fje.edu'),
-(10, 'Assassin''s Creed', 2, 13, 'aitor.blesa@fje.edu');
+INSERT INTO `tbl_juego` (`id_juegos`, `jue_nombre`, `id_genero`, `id_plataforma`, `jue_foto`, `usu_emailP`) VALUES
+(6, 'DriveClub 4', 4, 12, 'drive.jpg', 'aitor.blesa@fje.edu'),
+(7, 'FIFA 16', 5, 12, 'fifa16.jpg', 'sergio.ayala@fje.edu'),
+(8, 'World Of Warcraft', 7, 11, 'wow.jpg', 'sergio.ayala@fje.edu'),
+(9, 'OverWatch Origins 2', 3, 11, 'over.jpg', 'xavi.granell@fje.edu'),
+(10, 'Assassin''s Creed', 2, 13, 'assassins.jpg', 'aitor.blesa@fje.edu'),
+(11, 'SuperMario Bros', 8, 14, 'mariobros.jpg', 'xavi.granell@fje.edu'),
+(12, 'The Legend Of Zelda', 8, 14, 'zelda.jpg', 'aitor.blesa@fje.edu'),
+(13, 'MineCraft ', 2, 15, 'minecraft.jpg', 'sergio.ayala@fje.edu'),
+(14, 'Soul Sacrifice', 7, 15, 'soul.jpg', 'xavi.granell@fje.edu');
 
 -- --------------------------------------------------------
 
@@ -150,17 +156,18 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   `usu_contra` varchar(50) COLLATE utf8_bin NOT NULL,
 `id_usuario` int(11) NOT NULL,
   `usu_nombre` varchar(20) COLLATE utf8_bin NOT NULL,
-  `usu_apellido` varchar(35) COLLATE utf8_bin NOT NULL
+  `usu_apellido` varchar(35) COLLATE utf8_bin NOT NULL,
+  `usu_foto` varchar(25) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `tbl_usuario`
 --
 
-INSERT INTO `tbl_usuario` (`usu_email`, `usu_contra`, `id_usuario`, `usu_nombre`, `usu_apellido`) VALUES
-('aitor.blesa@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Aitor', 'Blesa'),
-('sergio.ayala@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Sergio', 'Ayala'),
-('xavi.granell@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 3, 'Xavi', 'Granell');
+INSERT INTO `tbl_usuario` (`usu_email`, `usu_contra`, `id_usuario`, `usu_nombre`, `usu_apellido`, `usu_foto`) VALUES
+('aitor.blesa@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Aitor', 'Blesa', 'aitor.jpg'),
+('sergio.ayala@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Sergio', 'Ayala', 'sergio.jpg'),
+('xavi.granell@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 3, 'Xavier', 'Granell', 'xavi.jpg');
 
 -- --------------------------------------------------------
 
@@ -248,7 +255,7 @@ MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `tbl_genero`
 --
 ALTER TABLE `tbl_genero`
-MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tbl_interesado`
 --
@@ -258,7 +265,7 @@ MODIFY `id_interes` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `tbl_juego`
 --
 ALTER TABLE `tbl_juego`
-MODIFY `id_juegos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id_juegos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `tbl_mensajes`
 --
