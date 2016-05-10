@@ -28,7 +28,7 @@ var validaFormulario=function(){
      document.getElementById("error_pass_vacio").style.display = "block";
     document.getElementById("error_pass_vacio").innerHTML = "<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Debe introducir una contraseña</div>";
     devolver = false;
-  }else{  
+  }else{
     document.getElementById("error_pass_vacio").innerHTML = "<span class='glyphicon glyphicon-glyphicon glyphicon-ok-circle text-success'></span>";
 
   }
@@ -59,7 +59,7 @@ var validaFormulario=function(){
     document.getElementById("error_nombre").innerHTML = "<span class='glyphicon glyphicon-glyphicon glyphicon-ok-circle text-success'></span>";
 
   }
-  
+
   ///////////////// APELLIDO /////////////////
   var valor = document.getElementById("apellido").value;
   if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
@@ -73,5 +73,5 @@ var validaFormulario=function(){
 
 
   return devolver;
-  
+
 }

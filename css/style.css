@@ -6,3 +6,7 @@
 .margen{
 	margin-top: 7%;
 }
+
+.imagenes_juegos:hover{
+	opacity: 0.1;
+}

@@ -63,10 +63,15 @@ $('#carga_aboutus').click(function(){
        });
    });
 
+   // $('#carga_perfiljuego').click(function(){
+   //
+   //    });
+
+// *********************** Valida el formulario y petición ajax que realiza la inserción del juego ***********************//
 	function validaFormularioJuego(){
 		var juego = document.getElementById("juego").value;
 	  if(juego == null || juego.length == 0){
-	  	
+
     	document.getElementById("error_juego_vacio").style.display = "block";
     	document.getElementById("error_juego_vacio").innerHTML="<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Introduce el nombre del juego</div>";
     	return false;
@@ -89,3 +94,15 @@ $('#carga_aboutus').click(function(){
 
 	}
 
+	function juegos(elemento){
+		$.ajax({
+   	    type: "POST",
+		async: true,
+		data: "id_juego="+elemento,
+   	    url: "./contenido/perfiljuego.php",
+   	    success: function(a) {
+   	    	$('#main-slider').hide('slow');
+               $('#carga_contenido').html(a);
+   	    }
+          });
+	}

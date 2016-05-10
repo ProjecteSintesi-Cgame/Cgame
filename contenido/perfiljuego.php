@@ -3,7 +3,6 @@
     include ("../conexion/conexion.php");
 ?>
 
-
 <div class="container">
   <div class="box">
       <div class="center gap">
@@ -14,7 +13,7 @@
           <ul class="portfolio-items col-4">
             <?php
 
-                $sql="SELECT * FROM tbl_juego ORDER BY RAND() LIMIT 8";
+                $sql="SELECT * FROM tbl_juego WHERE id_juegos=$_REQUEST[id_juego]";
 
 
                 $datos = mysqli_query($con, $sql);
@@ -27,11 +26,10 @@
                <div class="item-inner">
                    <div class="portfolio-image">
                        <img src="images/juegos/thumb/<?php echo $mostrar['jue_foto'];?>" alt="">
-                       <div class="overlay">
-                           <a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" onclick="juegos(<?php echo $mostrar['id_juegos'];?>);"><i class="icon-eye-open"></i></a>
-                       </div>
                    </div>
-               <h5><?php echo utf8_encode($mostrar['jue_nombre']); ?></h5>
+               <p>Juego: <?php echo utf8_encode($mostrar['jue_nombre']); ?></p>
+                 <p>Propietario del Juego: <a href="#"><?php echo utf8_encode($mostrar['usu_emailP']); ?></a></p>
+                   <p>Descripción: <?php echo utf8_encode($mostrar['jue_nombre']); ?></p>
                </div>
 
            </li><!--/.portfolio-item-->
@@ -44,4 +42,3 @@
       </div><!-- End row -->
   </div><!--/.box-->
 </div><!--/.container-->
-<script src="../js/contenido_web.js"></script>
