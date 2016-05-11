@@ -1,6 +1,6 @@
 <?php
 	include ("../conexion/conexion.php");
-	$sql = "SELECT * FROM tbl_mensajes INNER JOIN tbl_usuario ON tbl_mensajes.usu_email=tbl_usuario.usu_email WHERE id_chat=1 ORDER BY id_mensaje ASC";
+	$sql = "SELECT * FROM tbl_mensajes INNER JOIN tbl_usuario ON tbl_mensajes.usu_email=tbl_usuario.usu_email WHERE id_chat=$_REQUEST[chat] ORDER BY id_mensaje ASC";
 
 	$mensaje = array();
 
@@ -14,7 +14,8 @@
 			
 			$usuario = $mens['usu_nombre'];
 			$mens_mensaje = $mens['mens_mensaje'];
-			$mensaje[] = array('usuario'=> $usuario, 'mensaje'=> $mens_mensaje);
+			$email = $mens['usu_email'];
+			$mensaje[] = array('usuario'=> $usuario, 'mensaje'=> $mens_mensaje,'mail'=> $email);
 
 		}
 	}
