@@ -1,4 +1,7 @@
+<?php
+session_start();
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +11,22 @@
     <meta name="author" content="">
     <link href="css/chat.css" rel="stylesheet">
     <script>
-    	var usu1=<?php echo '"aitor.blesa@fje.edu"';?>;
-    	
+        <?php
+        if(isset($_REQUEST['usu_emailC'])){
+        ?>
+        var chat=<?php echo "'$_REQUEST[idChat]'";?>;
+    	var usu1=<?php echo "'$_REQUEST[usu_emailC]'";?>;
+    	var usu2=<?php echo "'$_SESSION[mail]'";?>;
+        <?php
+    }else{
+         ?>
+        var chat=<?php echo "'$_REQUEST[idChat]'";?>;
+        var usu1=<?php echo "'$_REQUEST[usu_emailP]'";?>;
+        var usu2=<?php echo "'$_SESSION[mail]'";?>;
+        <?php
+
+    }
+    ?>
 
     </script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -18,6 +35,7 @@
 </head>
 
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
+
 	<div id="chat">
 
 	</div>
