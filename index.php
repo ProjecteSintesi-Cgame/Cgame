@@ -68,17 +68,18 @@
     </section><!--/#main-slider-->
 
     <section id="carga_contenido" class="margen">
-      
+
     </section><!--/#carga_contenido-->
+
     <footer id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
                     &copy; 2016 CGame. Todos los derechos reservados.
                 </div>
-                <div class="col-sm-6">
+                <!-- <div class="col-sm-6">
                     <img class="pull-right" src="images/shapebootstrap.png" alt="ShapeBootstrap" title="ShapeBootstrap">
-                </div>
+                </div> -->
             </div>
         </div>
     </footer><!--/#footer-->

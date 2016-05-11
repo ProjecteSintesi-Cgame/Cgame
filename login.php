@@ -9,7 +9,7 @@
 ?>
 <html>
 <head>
-    <title>Soundity</title>
+    <title>CGame</title>
 
 
     <meta charset="utf-8"/>
@@ -81,9 +81,9 @@
         </div>
     </div>
 
-	<script src="assets/js/jquery-1.11.1.min.js"></script>
-    <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
-    <script src="assets/js/jquery.backstretch.min.js"></script>
-    <script src="assets/js/scripts.js"></script>
+	<script src="login/js/jquery-1.11.1.min.js"></script>
+    <!-- <script src="login/bootstrap/js/bootstrap.min.js"></script> -->
+    <script src="login/js/jquery.backstretch.min.js"></script>
+    <script src="login/js/scripts.js"></script>
 </body>
 </html>

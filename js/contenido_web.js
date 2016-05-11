@@ -87,7 +87,7 @@ $('#carga_aboutus').click(function(){
     	contentType: false,
     	processData: false,
 	    success: function(data) {
-	    	$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
+	    	$("#respuesta").html(data); // Mostrar las respuestas del script PHP.
 	    }
        });
     }
@@ -103,6 +103,19 @@ $('#carga_aboutus').click(function(){
    	    success: function(a) {
    	    	$('#main-slider').hide('slow');
                $('#carga_contenido').html(a);
+   	    }
+          });
+	}
+
+	function perfil(){
+		$.ajax({
+   	    type: "POST",
+		async: true,
+		//data: "usu_emailP="+elem,
+   	    url: "./contenido/perfilUser.php",
+   	    success: function(a) {
+   	    	$('#main-slider').hide('slow');
+            $('#carga_contenido').html(a);
    	    }
           });
 	}

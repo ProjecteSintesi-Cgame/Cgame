@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2016 a las 10:51:47
+-- Tiempo de generación: 11-05-2016 a las 08:07:56
 -- Versión del servidor: 5.6.21
--- Versión de PHP: 5.6.3
+-- Versión de PHP: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -100,10 +100,10 @@ CREATE TABLE IF NOT EXISTS `tbl_juego` (
 --
 
 INSERT INTO `tbl_juego` (`id_juegos`, `jue_nombre`, `id_genero`, `id_plataforma`, `jue_foto`, `usu_emailP`) VALUES
-(6, 'DriveClub 4', 4, 12, 'drive.jpg', 'aitor.blesa@fje.edu'),
+(6, 'DriveClub', 4, 12, 'drive.jpg', 'aitor.blesa@fje.edu'),
 (7, 'FIFA 16', 5, 12, 'fifa16.jpg', 'sergio.ayala@fje.edu'),
 (8, 'World Of Warcraft', 7, 11, 'wow.jpg', 'sergio.ayala@fje.edu'),
-(9, 'OverWatch Origins 2', 3, 11, 'over.jpg', 'xavi.granell@fje.edu'),
+(9, 'OverWatch', 3, 11, 'overwatch.jpg', 'xavi.granell@fje.edu'),
 (10, 'Assassin''s Creed', 2, 13, 'assassins.jpg', 'aitor.blesa@fje.edu'),
 (11, 'SuperMario Bros', 8, 14, 'mariobros.jpg', 'xavi.granell@fje.edu'),
 (12, 'The Legend Of Zelda', 8, 14, 'zelda.jpg', 'aitor.blesa@fje.edu'),
@@ -157,17 +157,19 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
 `id_usuario` int(11) NOT NULL,
   `usu_nombre` varchar(20) COLLATE utf8_bin NOT NULL,
   `usu_apellido` varchar(35) COLLATE utf8_bin NOT NULL,
-  `usu_foto` varchar(25) COLLATE utf8_bin NOT NULL
+  `usu_foto` varchar(25) COLLATE utf8_bin NOT NULL,
+  `usu_nick` varchar(20) COLLATE utf8_bin NOT NULL,
+  `usu_avatar` varchar(20) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `tbl_usuario`
 --
 
-INSERT INTO `tbl_usuario` (`usu_email`, `usu_contra`, `id_usuario`, `usu_nombre`, `usu_apellido`, `usu_foto`) VALUES
-('aitor.blesa@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Aitor', 'Blesa', 'aitor.jpg'),
-('sergio.ayala@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Sergio', 'Ayala', 'sergio.jpg'),
-('xavi.granell@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 3, 'Xavier', 'Granell', 'xavi.jpg');
+INSERT INTO `tbl_usuario` (`usu_email`, `usu_contra`, `id_usuario`, `usu_nombre`, `usu_apellido`, `usu_foto`, `usu_nick`, `usu_avatar`) VALUES
+('aitor.blesa@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Aitor', 'Blesa', 'aitor.jpg', 'Sangik', 'aitor.jpg'),
+('sergio.ayala@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Sergio', 'Ayala', 'sergio.jpg', 'Mrbowndepter', 'sergio.jpg'),
+('xavi.granell@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 3, 'Xavier', 'Granell', 'xavi.jpg', 'xavicillo', 'xavier.jpg');
 
 -- --------------------------------------------------------
 

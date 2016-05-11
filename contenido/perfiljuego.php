@@ -28,7 +28,7 @@
                        <img src="images/juegos/thumb/<?php echo $mostrar['jue_foto'];?>" alt="">
                    </div>
                <p>Juego: <?php echo utf8_encode($mostrar['jue_nombre']); ?></p>
-                 <p>Propietario del Juego: <a href="#"><?php echo utf8_encode($mostrar['usu_emailP']); ?></a></p>
+                 <p>Propietario del Juego: <a onclick="perfil();"><?php echo $mostrar['usu_emailP'];?></a></p>
                    <p>Descripción: <?php echo utf8_encode($mostrar['jue_nombre']); ?></p>
                </div>
 
@@ -42,3 +42,4 @@
       </div><!-- End row -->
   </div><!--/.box-->
 </div><!--/.container-->
+<script src="../js/contenido_web.js"></script>
