@@ -9,3 +9,10 @@
 .contenido2 {
 	text-align: right;
 }
+
+.chatOP {
+ position: right;
+ height: 600px;
+ width: 400px;
+
+}
