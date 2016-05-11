@@ -52,10 +52,10 @@ $('#carga_services').click(function(){
    });
 
 
-$('#carga_aboutus').click(function(){
+$('#carga_chat').click(function(){
       $.ajax({
 	    type: "POST",
-	    url: "./contenido/aboutus.php",
+	    url: "./contenido/listaChats.php",
 	    success: function(a) {
 	    	$('#main-slider').hide('slow');
             $('#carga_contenido').html(a);
@@ -63,15 +63,32 @@ $('#carga_aboutus').click(function(){
        });
    });
 
-   // $('#carga_perfiljuego').click(function(){
-   //
-   //    });
 
-// *********************** Valida el formulario y petición ajax que realiza la inserción del juego ***********************//
+
+function usuChat(mail){
+	var usuM = mail;
+	
+
+	$.ajax({
+	    type: "POST",
+	    data: 'usuM='+usuM,
+	    url: "./contenido/crearChat.proc.php",
+	    success: function(a) {
+	    	$('#main-slider').hide('slow');
+            $('#ChatOP').html(a);
+	    }
+       });
+
+}
+
+
+
+
+
 	function validaFormularioJuego(){
 		var juego = document.getElementById("juego").value;
 	  if(juego == null || juego.length == 0){
-
+	  	
     	document.getElementById("error_juego_vacio").style.display = "block";
     	document.getElementById("error_juego_vacio").innerHTML="<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Introduce el nombre del juego</div>";
     	return false;
@@ -87,7 +104,7 @@ $('#carga_aboutus').click(function(){
     	contentType: false,
     	processData: false,
 	    success: function(data) {
-	    	$("#respuesta").html(data); // Mostrar las respuestas del script PHP.
+	    	$("#respuesta").html(data); // Mostrar la respuestas del script PHP.
 	    }
        });
     }
@@ -119,3 +136,4 @@ $('#carga_aboutus').click(function(){
    	    }
           });
 	}
+
