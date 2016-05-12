@@ -10,7 +10,6 @@ function juegosindex(){
        });
 }
 
-
 // *********************** Al clicar en el Logo o en icono de Home, cargara el slider y juegosindex ***********************//
 $('#carga_index').click(function(){
 
@@ -26,10 +25,10 @@ $('#carga_index').click(function(){
 
 // *********************** Al clicar en un apartado del menu, carga el contenido y esconde el slider ***********************//
 
-$('#carga_portfolio').click(function(){
+$('#carga_plataforma').click(function(){
       $.ajax({
 	    type: "POST",
-	    url: "./contenido/portfolio.php",
+	    url: "./contenido/plataforma.php",
 	    success: function(a) {
 	    	$('#main-slider').hide('slow');
             $('#carga_contenido').html(a);
@@ -37,9 +36,18 @@ $('#carga_portfolio').click(function(){
        });
    });
 
-
-
-$('#carga_services').click(function(){
+   $('#carga_verperfil').click(function(){
+         $.ajax({
+   	    type: "POST",
+   	    url: "./contenido/perfil.php",
+   	    success: function(a) {
+   	    	$('#main-slider').hide('slow');
+               $('#carga_contenido').html(a);
+   	    }
+          });
+      });
+	  
+$('#carga_juego').click(function(){
 
       $.ajax({
 	    type: "POST",
@@ -64,11 +72,10 @@ $('#carga_chat').click(function(){
    });
 
 
+// *********************** Al clicar en un apartado del menu, carga el contenido del Chat y esconde el slider ***********************//
 
 function usuChat(mail){
 	var usuM = mail;
-	
-
 	$.ajax({
 	    type: "POST",
 	    data: 'usuM='+usuM,
@@ -78,17 +85,17 @@ function usuChat(mail){
             $('#ChatOP').html(a);
 	    }
        });
-
 }
 
 
 
 
-
+// *********************** Al clicar en un apartado del menu, carga el contenido y esconde el slider ***********************//
+//PASAR A JQUERY
 	function validaFormularioJuego(){
-		var juego = document.getElementById("juego").value;
+	  var juego = document.getElementById("juego").value;
 	  if(juego == null || juego.length == 0){
-	  	
+
     	document.getElementById("error_juego_vacio").style.display = "block";
     	document.getElementById("error_juego_vacio").innerHTML="<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Introduce el nombre del juego</div>";
     	return false;
@@ -111,6 +118,9 @@ function usuChat(mail){
 
 	}
 
+		// *********************** Al clicar en el juego, te carga el perfil de ese juego (perfiljuego.php) ***********************//
+
+
 	function juegos(elemento){
 		$.ajax({
    	    type: "POST",
@@ -124,16 +134,18 @@ function usuChat(mail){
           });
 	}
 
-	function perfil(){
+	// *********************** Al clicar en el propietario, te carga el perfil de ese usuario (perfilUser.php) ***********************//
+
+
+	function perfil(elem){
 		$.ajax({
    	    type: "POST",
 		async: true,
-		//data: "usu_emailP="+elem,
+		data: "usu_emailP="+elem,
    	    url: "./contenido/perfilUser.php",
    	    success: function(a) {
    	    	$('#main-slider').hide('slow');
-            $('#carga_contenido').html(a);
+               $('#carga_contenido').html(a);
    	    }
           });
 	}
-
