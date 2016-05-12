@@ -2,10 +2,13 @@
 	session_start();
 	include ("../conexion/conexion.php");
 
-	$sql="SELECT * FROM tbl_juego INNER JOIN tbl_usuario ON tbl_usuario.usu_email=tbl_juego.usu_emailP WHERE usu_emailP='$_SESSION[mail]'";
+	//$sql="SELECT DISTINCT * FROM tbl_juego INNER JOIN tbl_usuario ON tbl_usuario.usu_email=tbl_juego.usu_emailP WHERE usu_emailP='$_SESSION[mail]'";
 	//echo $sql;
-	$datos = mysqli_query($con, $sql);
-
+    $sql="SELECT DISTINCT usu_nick, usu_foto FROM tbl_juego INNER JOIN tbl_usuario ON tbl_usuario.usu_email=tbl_juego.usu_emailP WHERE usu_emailP='$_REQUEST[usu_emailP]'"; //usu_emailP='$mostrar[usu_emailP]'
+    $sql2="SELECT * FROM tbl_juego INNER JOIN tbl_usuario ON tbl_usuario.usu_email=tbl_juego.usu_emailP WHERE usu_emailP='$_REQUEST[usu_emailP]'"; //usu_emailP='$mostrar[usu_emailP]'
+	
+    $datos = mysqli_query($con, $sql);
+    $datos2 = mysqli_query($con, $sql2);
 
 ?>
 <div class="container">
@@ -26,29 +29,25 @@
 							<div>
 							<?php
 					 		if(!empty($mostrar['usu_foto'])){
-        						$fichero="media/images/$mostrar[usu_avatar]";
-        						echo"</br><img  class='ui small center left circular floated image' src='$fichero'>";
+        						$fichero="./images/media/$mostrar[usu_foto]";
+        						echo"</br><img  src='$fichero'>";
     						}else{
-        						echo"</br><img  src=../images/media/avatar.jpg>";
+                                $fichero2="./images/media/avatar.jpg";
+                                echo"</br><img  src='$fichero2'>";
     						}
 							?>
 							</div>
 
-							<!-- nombre usuario -->
-							<label>Nombre Usuario: </label>
-							<div>
-								<?php echo utf8_encode($mostrar['usu_nombre']); ?>
-							</div>
-							<!-- nombre usuario -->
-							<label>Apellido Usuario: </label>
-							<div>
-								<?php echo utf8_encode($mostrar['usu_apellido']); ?>
-							</div>
 						</div>
 						<div id="respuesta">
             			</div>
 					</div><!--/.center-->
             	</div><!--/.col-md-4-->
+				<?php
+                    }
+                }
+
+                ?>
         	</div><!--/.row-->
     	</div><!--/.box-->
 </div><!--/.container-->
@@ -57,22 +56,23 @@
 <div class="container">
    <div class="box">
        <div class="center gap">
-           <h2>Juegos de <?php echo utf8_encode($mostrar['usu_nick']); ?></h2>
+           <h2>Juegos del usuario: </h2>
        </div><!--/.center-->
        <div class="row">
             <ul class="portfolio-items col-4">
              <?php
                 //si se devuelve un valor diferente a 0 (hay datos)
-                if(mysqli_num_rows($datos)!=0){
-                    while ($mostrarjuego = mysqli_fetch_array($datos)) {
+                if(mysqli_num_rows($datos2)!=0){
+                    while ($mostrarjuego = mysqli_fetch_array($datos2)) {
                 ?>
 
            				<li class="portfolio-item apps">
                 			<div class="item-inner">
                     			<div class="portfolio-image">
-                        			<img src="images/juegos/thumb/<?php echo $mostrar['jue_foto'];?>" alt="">
+                        			<img src="images/juegos/thumb/<?php echo $mostrarjuego['jue_foto'];?>" alt="">
                         			<div class="overlay">
-                            			<a onclick="perfil(<?php echo $mostrarjuego['usu_emailP'];?>);"><i class="icon-eye-open"></i></a>
+                                    <!--Mediante on onclick, se pasa a la función juegos la variable id_juegos, que esta redirige a la página de perfiljuego -->
+                            			<a class="preview btn btn-danger" title="Lorem ipsum dolor sit amet" onclick="juegos(<?php echo $mostrarjuego['id_juegos'];?>);"><i class="icon-eye-open"></i></a>
                         			</div>
                     			</div>
                 				<h5><?php echo utf8_encode($mostrarjuego['jue_nombre']); ?></h5>
@@ -81,8 +81,6 @@
                 <?php
                     }
                 }
-							}
-					}
                 ?>
 
        		</ul>

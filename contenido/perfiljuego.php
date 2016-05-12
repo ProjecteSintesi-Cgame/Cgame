@@ -20,6 +20,8 @@
                    //si se devuelve un valor diferente a 0 (hay datos)
                 if(mysqli_num_rows($datos)!=0){
                     while ($mostrar = mysqli_fetch_array($datos)) {
+                      $mail= $mostrar['usu_emailP'];
+
                ?>
 
           <li class="portfolio-item apps">
@@ -28,7 +30,10 @@
                        <img src="images/juegos/thumb/<?php echo $mostrar['jue_foto'];?>" alt="">
                    </div>
                <p>Juego: <?php echo utf8_encode($mostrar['jue_nombre']); ?></p>
-                 <p>Propietario del Juego: <a onclick="perfil();"><?php echo $mostrar['usu_emailP'];?></a></p>
+                 <p>Propietario del Juego:
+                  <!-- Input que pasa el campo usu_emailP de la funcion perfil, y esta la redirije al perfil del usuario -->
+                 <a <?php echo "<input type='button' id='idUsuChat' onclick=perfil('$mostrar[usu_emailP]')"; ?> ><i class="icon-eye-open"></i></a>
+
                    <p>Descripción: <?php echo utf8_encode($mostrar['jue_nombre']); ?></p>
                </div>
 
@@ -43,3 +48,6 @@
   </div><!--/.box-->
 </div><!--/.container-->
 <script src="../js/contenido_web.js"></script>
+
+
+
