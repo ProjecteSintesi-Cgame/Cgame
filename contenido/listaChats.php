@@ -1,54 +1,180 @@
-<?php
-session_start();
-	include ("../conexion/conexion.php");
 
+<?php
+    session_start();
+    if(isset($_SESSION['mail'])){
+        include ("../conexion/conexion.php");
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>CGame</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css" rel="stylesheet">
+    <link href="../css/prettyPhoto.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/chat.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/cargaChat.js"></script>
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="0">
+    <header id="header" role="banner">
+
+
+    </header><!--/#header-->
+
+
+
+    <section id="carga_contenido" class="margen">
+
+        <div class="return_web">
+            <a href="../index.php">Volver a la Web</a>
+        </div>
+
 <div class="container">
             <div class="box first">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="center">
+                <div class="chat">
+                    <div class="lista_chats">
+                    <?php
+                         $sqlChat="SELECT usu_emailP, usu_emailC, id_chat FROM tbl_chat WHERE tbl_chat.usu_emailP='$_SESSION[mail]' OR tbl_chat.usu_emailC='$_SESSION[mail]' ";
+                         $Tchats = mysqli_query($con, $sqlChat);
+                            if (mysqli_num_rows($Tchats)>0){
+                            while($chat=mysqli_fetch_array($Tchats)) {
+                            ?>
+
                             <?php
-                                 $sqlChat="SELECT usu_emailP, usu_emailC FROM tbl_chat WHERE tbl_chat.usu_emailP='$_SESSION[mail]' OR tbl_chat.usu_emailC='$_SESSION[mail]' ";
-                                 //echo $sqlChat;
-                                 $Tchats = mysqli_query($con, $sqlChat);
-                                                  
-                                    while($chat=mysqli_fetch_array($Tchats)) { 
-                                                               
-                                        if ($chat['usu_emailP']==$_SESSION['mail']){
-                                            $sqlUsu= "SELECT id_usuario,usu_nombre,usu_email FROM tbl_usuario WHERE usu_email='$chat[usu_emailC]'";
-                                            //echo $sqlUsu;
-                                                    $Tusu = mysqli_query($con, $sqlUsu);
-                                                  
-                                                     while($usu=mysqli_fetch_array($Tusu)) { 
-                                                            echo "<input type='button' id='idUsuChat' onclick=usuChat('$usu[usu_email]') value = '$usu[usu_nombre]' '> </br>";
+                                if ($chat['usu_emailP']==$_SESSION['mail']){
+                                    $sqlUsu= "SELECT id_usuario,usu_nick,usu_email FROM tbl_usuario WHERE usu_email='$chat[usu_emailC]'";
+                                    //echo $sqlUsu;
+                                    $Tusu = mysqli_query($con, $sqlUsu);
+                                ?>
+                                    <ul class="portfolio-filter">
+                                <?php
 
-                                                     }
-
-
-                                        }else{
-                                            $sqlUsu= "SELECT id_usuario,usu_nombre,usu_email FROM tbl_usuario WHERE usu_email='$chat[usu_emailP]'";
-                                                    $Tusu = mysqli_query($con, $sqlUsu);
-                                                  
-                                                     while($usu=mysqli_fetch_array($Tusu)) { 
-                                                            echo "<input type='button' id='idUsuChat' onclick=usuChat('$usu[usu_email]') value = '$usu[usu_nombre]' '> </br>";
-
-                                                     }
-
-                                        }
-                                    }
+                                    while($usu=mysqli_fetch_array($Tusu)) {
                                         ?>
 
-                                        
 
+                                        <?php
+                                            $sql = "SELECT COUNT(id_mensaje) AS total, id_chat FROM tbl_mensajes WHERE visto=0 AND usu_email='$chat[usu_emailC]' AND id_chat='$chat[id_chat]'";
+                                            $datos = mysqli_query($con, $sql);
+                                            while ($contador = mysqli_fetch_array($datos)) {
+                                                if($contador['total']!=0){
+                                                echo "<span class='notif_chat'><div class='notif2' id='$chat[id_chat]'>$contador[total]</div></span>";
+                                                }
+
+                                        ?>
+
+                                        <div class="estructuraLista" id='idUsuChat' onclick="usuChat(<?php echo "'$usu[usu_email]'";?>,<?php echo "$chat[id_chat]";?>);">
+                                        <div class="borrarchat">
+                                             <a id='borrarChat' onclick="borrarChat(<?php echo "'$chat[id_chat]'";?>);">X</a>
+                                        </div>
+                                            <div class='nick_izquierda'>
+                                                        <?php
+                                                        if(!empty($usu['usu_foto'])){
+                                                        $fichero="../images/media/$usu[usu_foto]";
+                                                        echo"<img  class='fotoUserChat' src='$fichero'>";
+                                                        }else{
+                                                        $fichero2="../images/media/avatar.jpg";
+                                                        echo"<img class='fotoUserChat' src='$fichero2'>";
+                                                        }
+                                                    ?>
+
+
+                                            </div>
+                                            <div class="nick_derecha">
+                                                <a> <?php echo $usu['usu_nick'];?></a>
+                                            </div>
+                                        </div>
+
+                                        </ul><!--/#portfolio-filter-->
+                                        <?php
+                                    }
+                                }
+                                }else{
+                                    $sqlUsu= "SELECT id_usuario,usu_nick,usu_email FROM tbl_usuario WHERE usu_email='$chat[usu_emailP]'";
+                                    $Tusu = mysqli_query($con, $sqlUsu);
+                                    while($usu=mysqli_fetch_array($Tusu)) {
+                                        ?>
+
+                                             <?php
+                                            $sql = "SELECT COUNT(id_mensaje) AS total, id_chat FROM tbl_mensajes WHERE visto=0 AND usu_email='$chat[usu_emailP]' AND id_chat='$chat[id_chat]'";
+                                            $datos = mysqli_query($con, $sql);
+                                            while ($contador = mysqli_fetch_array($datos)) {
+                                                if($contador['total']!=0){
+                                                echo "<span class='notif2'><div class='notif_chat' id='$chat[id_chat]'>$contador[total]</div></span>";
+                                                }
+
+
+
+                                        ?>
+                                         <div class="borrarchat">
+                                             <a id='borrarChat' onclick="borrarChat(<?php echo "'$chat[id_chat]'";?>);">X</a>
+                                        </div>
+                                        <div class="estructuraLista" id='idUsuChat' onclick="usuChat(<?php echo "'$usu[usu_email]'";?>,<?php echo "$chat[id_chat]";?>);">
+                                            <div class="borrarchat">
+                                                 <a id='borrarChat' onclick="borrarChat(<?php echo "'$chat[id_chat]'";?>);">X</a>
+                                            </div>
+                                            <div class='nick_izquierda'>
+                                                <?php
+                                                if(!empty($usu['usu_foto'])){
+                                                $fichero="../images/media/$usu[usu_foto]";
+                                                echo"<img  class='fotoUserChat' src='$fichero'>";
+                                                }else{
+                                                $fichero2="../images/media/avatar.jpg";
+                                                echo"<img class='fotoUserChat' src='$fichero2'>";
+                                                }
+                                                ?>
+
+
+                                            </div>
+                                            <div class="nick_derecha">
+                                                <a> <?php echo $usu['usu_nick'];?></a>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                    }
+                                        }
+
+                                }
+                            }
+                        }else{
+
+                        echo "No tienes ningún chat";
+                        }
+                            ?>
                         </div>
+
+                    <div class="conversacion">
                         <div id="ChatOP" class="ChatOP">
-
+                            <!--Contenido del chat -->
                         </div>
-                    </div><!--/.col-md-4-->
-                    
-                </div><!--/.row-->
+
+                    </div>
+                </div>
             </div><!--/.box-->
         </div><!--/.container-->
 
 
+    </section><!--/#carga_contenido-->
+
+
+
+
+
+</body>
+</html>
+<?php
+    }else{
+        header("Location: login.php");
+        die();
+    }
+?>

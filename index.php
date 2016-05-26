@@ -10,38 +10,66 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>CGame</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-     <link href="css/style.css" rel="stylesheet">
+    <link href="css/chat.css" rel="stylesheet">
+    <link rel="stylesheet" href="login/css/form-elements.css">
+    <link rel="stylesheet" href="login/css/style.css">
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="js/maps.js"></script>
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
     <header id="header" role="banner">
-        <div class="container">
-            <div id="navbar" class="navbar navbar-default">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a id="carga_index" class="navbar-brand" href="#home"></a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li id="carga_services"><a href="#services">Subir Anuncio</a></li>
-                        <li id="carga_portfolio"><a href="#portfolio">Portfolio</a></li>
-                        <!-- <li><a href="#pricing">Pricing</a></li> -->
-                        <li id="carga_aboutus"><a href="#about-us">About Us</a></li>
-                        <li id="carga_verperfil"><a href="#verperfil">Perfil</a></li>
-                        <li><a href="login.php"><i class="icon-signout icon-large"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+
+<div class="container">
+    <nav role="navigation" class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="sidebar icon"></i>
+            </button>
+            <a id="carga_index" class="navbar-brand" href="#home"></a>
         </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+            <li id="carga_juego"><a href="#subir_juego">Subir Juego</a></li>
+
+                <li class="dropdown">
+                    <a id="menu_li" data-toggle="dropdown" class="dropdown-toggle" href="#">Plataforma<i class="angle down icon"></i></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li id="carga_plataforma"><a href="#plataforma" onclick="cargaPlataforma(11)">PC</a></li>
+                            <li class="divider"></li>
+                        <li id="carga_plataforma"><a href="#plataforma" onclick="cargaPlataforma(12)">PlayStation</a></li>
+                            <li class="divider"></li>
+                        <li id="carga_plataforma"><a href="#plataforma" onclick="cargaPlataforma(13)">Xbox</a></li>
+                            <li class="divider"></li>
+                        <li id="carga_plataforma"><a href="#plataforma" onclick="cargaPlataforma(14)">Nintendo wii </a></li>
+                            <li class="divider"></li>
+                        <li id="carga_plataforma"><a href="#plataforma" onclick="cargaPlataforma(15)">Playstation Portable</a></li>
+                    </ul>
+                </li>
+                <li id="carga_chat"><a href="contenido/listaChats.php">Chat</a><span class="notif"><div class="notif_index" id="notif"></div></span></li>
+                <li id="carga_verperfilpropio"><a href="#verperfil">Perfil</a></li>
+
+
+                    <form role="search" class="navbar-left">
+                        <div class="form-group">
+                            <input type="text" placeholder="Buscar..." class="form-control" id="barraBusqueda" onkeypress="busqueda(event,document.getElementById('barraBusqueda').value)">
+                        </div>
+                    </form>
+
+                    <li><a href="login.php"><i class="sign out icon"></i></a></li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
     </header><!--/#header-->
 
     <section id="main-slider" class="carousel">
@@ -63,11 +91,15 @@
                 </div>
             </div><!--/.item-->
         </div><!--/.carousel-inner-->
-        <a class="prev" href="#main-slider" data-slide="prev"><i class="icon-angle-left"></i></a>
-        <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
+        <a class="prev" href="#main-slider" data-slide="prev"><i class="angle left icon"></i></a>
+        <a class="next" href="#main-slider" data-slide="next"><i class="angle right icon"></i></a>
     </section><!--/#main-slider-->
 
     <section id="carga_contenido" class="margen">
+
+    </section><!--/#carga_contenido-->
+
+     <section id="carga_juegos" class="margen">
 
     </section><!--/#carga_contenido-->
 
@@ -83,7 +115,7 @@
             </div>
         </div>
     </footer><!--/#footer-->
-    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/contenido_web.js"></script>
 </body>

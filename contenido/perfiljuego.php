@@ -27,12 +27,22 @@
           <li class="portfolio-item apps">
                <div class="item-inner">
                    <div class="portfolio-image">
-                       <img src="images/juegos/thumb/<?php echo $mostrar['jue_foto'];?>" alt="">
+                    <?php
+                      if ($mostrar['jue_foto']==""){
+                        ?>
+                      <img class="img-responsive" src="./images/juegos/thumb/juego.png" alt="">
+                      <?php
+                    }else{
+                      ?>
+                      <img class="img-responsive" src="./images/juegos/thumb/<?php echo $mostrar['jue_foto'];?>" alt="">
+                      <?php
+                    }
+                    ?>
                    </div>
                <p>Juego: <?php echo utf8_encode($mostrar['jue_nombre']); ?></p>
                  <p>Propietario del Juego:
                   <!-- Input que pasa el campo usu_emailP de la funcion perfil, y esta la redirije al perfil del usuario -->
-                 <a <?php echo "<input type='button' id='idUsuChat' onclick=perfil('$mostrar[usu_emailP]')"; ?> ><i class="icon-eye-open"></i></a>
+                 <a <?php echo "<input type='button' id='idUsuChat' onclick=perfil('$mostrar[usu_emailP]')"; ?> ><i class="unhide icon"></i></a>
 
                    <p>Descripción: <?php echo utf8_encode($mostrar['jue_nombre']); ?></p>
                </div>

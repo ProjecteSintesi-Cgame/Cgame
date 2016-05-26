@@ -6,72 +6,87 @@ var validaFormulario=function(){
 
   //si es nulo
   if(email == null || email.length == 0){
-    document.getElementById("error_correo_vacio").style.display = "block";
-    document.getElementById("error_correo_vacio").innerHTML="<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Introduce una direccion de correo valida</div>";
-    devolver = false;
-
+      $("#error_correo_vacio").show();
+      $("#error_correo_vacio").html("Debe introducir un email");
+      devolver = false;
     //sino si cumplen la expresion regular
-  }else if(!/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email)){
-    document.getElementById("error_correo_vacio").style.display = "none";
-     document.getElementById("error_correo_formato").style.display = "block";
-    document.getElementById("error_correo_formato").innerHTML="<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> El formato de correo es incorrecto.</div>";;
-    devolver = false;
-
+}else if(!/^\w+.+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email)){
+      $("#error_correo_vacio").hide();
+      $("#error_correo_formato").show();
+      $("#error_correo_formato").html("El formato de correo es incorrecto");
+      devolver = false;
   }else{
-    document.getElementById("error_correo_vacio").innerHTML = "<span class='glyphicon glyphicon-glyphicon glyphicon-ok-circle text-success'></span>";
-    document.getElementById("error_correo_formato").style.display = "none";
+      $("#error_correo_vacio").hide();
+      $("#error_correo_formato").hide();
+  }
+
+  ///////////////// DIRECCION /////////////////
+  var direccion = document.getElementById("direccion").value;
+  if (direccion == null || direccion.length == 0 || /^\s+$/.test(direccion)) {
+      $("#error_confirmar_pass_incorrecto").hide();
+      $("#error_direccion").show();
+      $("#error_direccion").html("Debe introducir una direccion");
+      devolver = false;
+  } else {
+      $("#error_direccion").hide();
+  }
+  ///////////////// NICKNAME /////////////////
+  var nickname = document.getElementById("nickname").value;
+  if (nickname == null || nickname.length == 0 || /^\s+$/.test(nickname)) {
+      $("#error_confirmar_pass_incorrecto").hide();
+      $("#error_nickname").show();
+      $("#error_nickname").html("Debe introducir un nickname");
+      devolver = false;
+  } else {
+      $("#error_nickname").hide();
+  }
+
+
+  ///////////////// NOMBRE /////////////////
+  var valor = document.getElementById("nombre").value;
+  if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
+    $("#error_nombre").show();
+    $("#error_nombre").html("Debe introducir un nombre");
+    devolver = false;
+  }else{
+      $("#error_nombre").hide();
+  }
+
+  ///////////////// APELLIDO /////////////////
+  var valor = document.getElementById("apellido").value;
+  if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
+      $("#error_apellido").show();
+      $("#error_apellido").html("Debe introducir un apellido");
+      devolver = false;
+  }else{
+      $("#error_apellido").hide();
   }
 
   /////////////// CONTRASEÑA ///////////////
   var pass = document.getElementById("pass").value;
   if(pass == null || pass.length == 0){
-     document.getElementById("error_pass_vacio").style.display = "block";
-    document.getElementById("error_pass_vacio").innerHTML = "<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Debe introducir una contraseña</div>";
+      $("#error_pass_vacio").show();
+      $("#error_pass_vacio").html("Debe introducir una contraseña");
     devolver = false;
   }else{
-    document.getElementById("error_pass_vacio").innerHTML = "<span class='glyphicon glyphicon-glyphicon glyphicon-ok-circle text-success'></span>";
+     $("#error_pass_vacio").hide();
 
   }
   ////////// CONFIRMAR CONTRASEÑA //////////
   var pass = document.getElementById("pass").value;
   var confirmar_pass = document.getElementById("confirmar_pass").value;
   if(confirmar_pass == null || confirmar_pass.length == 0) {
-    document.getElementById("error_confirmar_pass_vacio").style.display = "block";
-    document.getElementById("error_confirmar_pass_vacio").innerHTML = "<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Debe introducir una contraseña</div>";
-    devolver = false;
+      $("#error_confirmar_pass_vacio").show();
+      $("#error_confirmar_pass_vacio").html("Debe verificar la contraseña");
+      devolver = false;
   } else if(pass!=confirmar_pass){
-    document.getElementById("error_confirmar_pass_vacio").style.display = "none";
-    document.getElementById("error_confirmar_pass_incorrecto").style.display = "block";
-    document.getElementById("error_confirmar_pass_incorrecto").innerHTML = "<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Las contraseñas no coinciden</div>";
-    devolver = false;
+      $("#error_confirmar_pass_vacio").hide();
+      $("#error_confirmar_pass_incorrecto").show();
+      $("#error_confirmar_pass_incorrecto").html("Las contraseñas no coinciden");
+      devolver = false;
   }else{
-    document.getElementById("error_confirmar_pass_vacio").innerHTML = "<span class='glyphicon glyphicon-glyphicon glyphicon-ok-circle text-success'></span>";
-    document.getElementById("error_confirmar_pass_incorrecto").style.display = "none";
+      $("#error_confirmar_pass_incorrecto").hide();
   }
-
-  ///////////////// NOMBRE /////////////////
-  var valor = document.getElementById("nombre").value;
-  if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
-    document.getElementById("error_nombre").style.display = "block";
-    document.getElementById("error_nombre").innerHTML = "<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Debe introducir un nombre</div>";;
-    devolver = false;
-  }else{
-    document.getElementById("error_nombre").innerHTML = "<span class='glyphicon glyphicon-glyphicon glyphicon-ok-circle text-success'></span>";
-
-  }
-
-  ///////////////// APELLIDO /////////////////
-  var valor = document.getElementById("apellido").value;
-  if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
-    document.getElementById("error_apellido").style.display = "block";
-    document.getElementById("error_apellido").innerHTML = "<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span> Debe introducir un apellido</div>";;
-    devolver = false;
-  }else{
-    document.getElementById("error_apellido").innerHTML = "<span class='glyphicon glyphicon-glyphicon glyphicon-ok-circle text-success'></span>";
-  }
-
-
-
   return devolver;
 
 }

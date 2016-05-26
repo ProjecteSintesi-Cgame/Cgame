@@ -10,6 +10,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="css/chat.css" rel="stylesheet">
+    <script src="../js/chat.js"></script>
     <script>
         <?php
         if(isset($_REQUEST['usu_emailC'])){
@@ -31,7 +32,7 @@ session_start();
     </script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/chat.js"></script>
-    
+
 </head>
 
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
@@ -40,7 +41,7 @@ session_start();
 
 	</div>
 	</br>
-	<input type="text" name="escritor" id="escritor" onkeypress="insertarMensajes(event,document.getElementById('escritor').value)">
+	<input type="text" class="escritor" name="escritor" id="escritor" onkeypress="insertarMensajes(event,document.getElementById('escritor').value)">
 
 
 </body>
